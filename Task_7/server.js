@@ -1,7 +1,7 @@
-var http = require('http');
-var fs = require('fs');
-var url = require("url");
-var formidable = require('formidable');
+let http = require('http');
+let fs = require('fs');
+let url = require("url");
+let formidable = require('formidable');
 
 http.createServer((req, res) => {
     if (req.method === "GET") {
@@ -20,11 +20,11 @@ http.createServer((req, res) => {
 
         switch(p.pathname) {
             case "/upload":
-                var form = new formidable.IncomingForm();
+                let form = new formidable.IncomingForm();
                 form.parse(req, function (err, fields, files) {
-                    var oldpath = files.filetoupload.path;
+                    let oldpath = files.filetoupload.path;
                             
-                    var newpath =  `./upload/${files.filetoupload.name}`;
+                    let newpath =  `./upload/${files.filetoupload.name}`;
                 
                     fs.rename(oldpath, newpath, function (err) {
                         if (err) throw err;
@@ -33,7 +33,7 @@ http.createServer((req, res) => {
                     });
                 });
                 break;
-            case "CANCEL":
+            case "/CANCEL":
                 res.writeHead(200, {"Content-type": "text/plain; charset=utf-8"});
                 res.end('CANCEL');
                 break;

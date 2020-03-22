@@ -84,9 +84,5 @@ let http_handler = (req, res) => {
   } 
 };
 
-server.on("connection", (socket) => {
-  console.log("Get Socket");
-});
-
 server.on("request", http_handler);
 server.listen(40001);

@@ -5,9 +5,9 @@ let qs = require("querystring");
 let server = http.createServer();
 
 let http_handler = (req, res) => {
-  res.writeHead(200, {"Content-type": "text/html; charset=utf-8"});
-
   if (req.method === "GET") {
+    res.writeHead(200, {"Content-type": "text/html; charset=utf-8"});
+
     const markup = `
     <form method="post" action="/">
       <input type ="text" name="x" placeholder="x">
@@ -56,7 +56,7 @@ let http_handler = (req, res) => {
     });
   }
   else {
-    res.end(`You made a ${req.method} request! But you should to do GET request`);
+    res.end(`You made a ${req.method} request! But you should to do GET or POST request`);
   }
 };
 

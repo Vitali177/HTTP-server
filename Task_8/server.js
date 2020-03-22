@@ -11,7 +11,7 @@ let http_handler = (req, res) => {
         res.end("File was not found!");
       }
       else {
-        res.setHeader("Content-disposition", "attachment; filename=text.txt");
+        res.setHeader("Content-disposition", "attachment; filename=file.txt");
         res.end(content);
       }      
     });    
@@ -20,10 +20,6 @@ let http_handler = (req, res) => {
     res.end(`You made a ${req.method} request! But you should to do GET request`);
   }
 };
-
-server.on("connection", (socket) => {
-  console.log("Get Socket");
-});
 
 server.on("request", http_handler);
 server.listen(40001);
